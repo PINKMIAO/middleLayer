@@ -13,7 +13,7 @@ public class K780Api implements Callable<String>{
 	}
 
 	public String call() throws Exception {
-		result = HttpClient.sendGet("http://api.k780.com/?app=phone.get&phone="+num+"&appkey=49909&sign=8956c57e230d895d3767bdda39de107c&format=json");
+		result = HttpClient.sendGet("http://api.k780.com/?app=phone.get&phone="+num+"&appkey=*&sign=*&format=json");
 		if(result.indexOf("\"success\":\"0\"") > 0) {
 			// 超过免费次数，弃用
 			Thread.sleep(8000L);
