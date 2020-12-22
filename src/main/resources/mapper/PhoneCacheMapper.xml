@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meorient.avaya.mapper.PhoneCacheMapper">
+
+    <resultMap id="getPhoneMsg" type="phoneCache">
+        <result column="origin_phone" property="originPhone"/>
+        <result column="actual_phone" property="actualPhone"/>
+        <result column="create_Time" property="createTime"/>
+    </resultMap>
+    <!--for test-->
+    <select id="getAllPhoneMsg" resultMap="getPhoneMsg">
+        select * from phone_cache;
+    </select>
+
+    <select id="isExist" resultMap="getPhoneMsg">
+        select origin_phone, actual_phone from phone_cache where origin_phone = #{num};
+    </select>
+    <!--需要修改-->
+    <insert id="insertOnePhoneCache" parameterType="phoneCache">
+        insert into phone_cache (origin_phone, actual_phone, create_time) value (#{originPhone}, #{actualPhone}, #{createTime});
+    </insert>
+
+</mapper>
